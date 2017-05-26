@@ -65,10 +65,14 @@
         <h1><img alt="Star Wars: The Lost Holocrons" src="img/star-wars-the-lost-holocrons.png"></h1>
       </div>
       <div class="hologram" ng-controller="MainController">
-        <div class="holocron-msg"> {{ jedi.quote }} </div>
-        <div class="holocron-projection"></div>
+        <div class="holocron--msg">
+          <div class="holocron--msg-quote"> {{ jedi.quote }} </div>
+          <div class="holocron--msg-master"> {{ jedi.master }} </div>
+          <!-- Put the Social buttons to share the quote -->
+        </div>
+        <div class="holocron-projection"><img ng-src="{{ jedi.image }}"></div>
         <div class="holocron">
-          <div class="holocron-btn" onclick="changeQuote()"></div>
+          <div class="holocron-btn" ng-click="changeQuote($index)"></div>
         </div>
       </div>
     </div>

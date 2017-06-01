@@ -65,4 +65,29 @@ app.controller('MainController',
       image: 'img/obi-wan-kenobi.png'
     }
   ];
+
+
+  const quoteContainer = document.querySelector(".holocron--msg-quote");
+  const masterContainer = document.querySelector(".holocron--msg-master");
+  const hologramContainer = document.querySelector(".holocron-projection");
+  var sort;
+  var jediCouncil = jedi.length; //set here the $scope.jedi length
+
+
+  $scope.changeQuote = function(index) {
+    choosenMaster = (Math.floor(Math.random *(jediCouncil - 1)));
+    wisdom = jedi[choosenMaster].quote.length;
+    choosenQuote = (Math.floor(Math.random * (wisdom -1)));
+    revealQuote = jedi[choosenMaster].quote[choosenQuote];
+    revealMaster = jedi[choosenMaster].master;
+    revealImage = jedi[choosenMaster].image;
+
+    //Here goes the innerHTML to change the hologram in the view
+
+
+
+    return revealQuote;
+
+  }
+
   }]);

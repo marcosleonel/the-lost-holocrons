@@ -67,11 +67,13 @@ app.controller('MainController',
   ];
 
 
+
+  var sort;
+  var jediCouncil = jedi.length; //set here the $scope.jedi length
+
   const quoteContainer = document.querySelector(".holocron--msg-quote");
   const masterContainer = document.querySelector(".holocron--msg-master");
   const hologramContainer = document.querySelector(".holocron-projection");
-  var sort;
-  var jediCouncil = jedi.length; //set here the $scope.jedi length
 
 
   $scope.changeQuote = function(index) {
@@ -83,6 +85,9 @@ app.controller('MainController',
     revealImage = jedi[choosenMaster].image;
 
     //Here goes the innerHTML to change the hologram in the view
+    hologramContainer.innerHTML = "{{ " + revealImage + " }}";
+    masterContainer.innerHTML = "{{ " + revealMaster + " }}";
+    quoteContainer.innerHTML = "{{ " + revealQuote + " }}";
 
 
 

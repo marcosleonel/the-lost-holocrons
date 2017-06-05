@@ -55,7 +55,7 @@ app.controller('MainController',
     },
     {
       quote: ['Only a Sith Lord deals in absolutes.',
-              'Many of the truths that we cling to depend on our point of view.'
+              'Many of the truths that we cling to depend on our point of view.',
               'Who\'s more foolish? The fool or the fool who follows him?',
               'In my experience, there is no such thing as luck.',
               'The Force will be with you always.',
@@ -66,32 +66,28 @@ app.controller('MainController',
     }
   ];
 
-
-
-  var sort;
-  var jediCouncil = jedi.length; //set here the $scope.jedi length
-
+  const jedi = $scope.jedi;
   const quoteContainer = document.querySelector(".holocron--msg-quote");
   const masterContainer = document.querySelector(".holocron--msg-master");
   const hologramContainer = document.querySelector(".holocron-projection");
 
+  var jediCouncil = jedi.length; //set here the $scope.jedi length
 
-  $scope.changeQuote = function(index) {
-    choosenMaster = (Math.floor(Math.random *(jediCouncil - 1)));
-    wisdom = jedi[choosenMaster].quote.length;
-    choosenQuote = (Math.floor(Math.random * (wisdom -1)));
-    revealQuote = jedi[choosenMaster].quote[choosenQuote];
-    revealMaster = jedi[choosenMaster].master;
-    revealImage = jedi[choosenMaster].image;
+  $scope.changeQuote = function() {
+
+    var choosenMaster = Math.floor(Math.random() * (jediCouncil - 1));
+    var wisdom = jedi[choosenMaster].quote.length;
+    var choosenQuote = Math.floor(Math.random() * (wisdom -1));
+    var revealQuote = jedi[choosenMaster].quote[choosenQuote];
+    var revealMaster = jedi[choosenMaster].master;
+    var revealImage = jedi[choosenMaster].image;
 
     //Here goes the innerHTML to change the hologram in the view
-    hologramContainer.innerHTML = "{{ " + revealImage + " }}";
-    masterContainer.innerHTML = "{{ " + revealMaster + " }}";
-    quoteContainer.innerHTML = "{{ " + revealQuote + " }}";
+    hologramContainer.innerHTML = revealImage;
+    masterContainer.innerHTML = revealMaster;
+    quoteContainer.innerHTML = revealQuote;
 
-
-
-    return revealQuote;
+    return;
 
   }
 

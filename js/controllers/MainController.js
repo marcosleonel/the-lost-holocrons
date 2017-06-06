@@ -30,7 +30,7 @@ app.controller('MainController',
               'On many long journeys have I gone. And waited, too, for others to return from journeys of their own. Some return; some are broken; some come back so different only their names remain.',
               'Hmm. In the end, cowards are those who follow the dark side.'],
       master: 'Yoda',
-      image: 'img/yoda.png'
+      image: 'img/holocron-yoda.png'
     },
     {
       quote: ['Be mindful of your feelings.',
@@ -41,7 +41,7 @@ app.controller('MainController',
               'This disturbance in the Force is making it hard to get a sense of things.',
               'I respect your traditions and your ancestors, but... we cannot allow the destruction of an innocent life form.'],
       master: 'Windu',
-      image: 'img/mace-windu.png'
+      image: 'img/holocron-mace-windu.png'
     },
     {
       quote: ['The force lives in everywhere!',
@@ -51,7 +51,7 @@ app.controller('MainController',
               'Your eyes can deceive you; don\'t trust them.',
               'There\'s always a bigger fish.'],
       master: 'Qui Gon Jin',
-      image: 'img/qui-gon-jin.png'
+      image: 'img/holocron-qui-gon-jin.png'
     },
     {
       quote: ['Only a Sith Lord deals in absolutes.',
@@ -62,7 +62,7 @@ app.controller('MainController',
               'Strike me down and I will become more powerful than you could possibly imagine.',
               'Be mindful of your thoughts. They can betray you.'],
       master: 'Obi Wan Kenobi',
-      image: 'img/obi-wan-kenobi.png'
+      image: 'img/holocron-obi-wan-kenobi.png'
     }
   ];
 
@@ -71,8 +71,9 @@ app.controller('MainController',
   const masterContainer = document.querySelector(".holocron--msg-master");
   const hologramContainer = document.querySelector(".holocron-projection");
 
-  var jediCouncil = jedi.length; //set here the $scope.jedi length
+  var jediCouncil = jedi.length;
 
+  //Fucntion to sort the holocron message and change the view
   $scope.changeQuote = function() {
 
     var choosenMaster = Math.floor(Math.random() * (jediCouncil - 1));
@@ -82,8 +83,7 @@ app.controller('MainController',
     var revealMaster = jedi[choosenMaster].master;
     var revealImage = jedi[choosenMaster].image;
 
-    //Here goes the innerHTML to change the hologram in the view
-    hologramContainer.innerHTML = revealImage;
+    hologramContainer.innerHTML = "<img src=" + revealImage + ">";
     masterContainer.innerHTML = revealMaster;
     quoteContainer.innerHTML = revealQuote;
 

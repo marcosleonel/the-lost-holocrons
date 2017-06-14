@@ -66,11 +66,13 @@
       </div>
       <div class="hologram" ng-controller="MainController">
         <div class="holocron--msg">
-          <div class="holocron--msg-quote"></div>
-          <div class="holocron--msg-master"></div>
+          <div class="holocron--msg-quote"> {{ msg.quote }}</div>
+          <div class="holocron--msg-master">{{ msg.master }}</div>
           <!-- Put the Social buttons to share the quote -->
         </div>
-        <div class="holocron-projection"></div>
+        <div class="holocron-projection">
+          <img alt="Jedi Master" ng-src="{{ msg.image }}">
+        </div>
         <div class="holocron">
           <input type="button" value="TEST" class="holocron-btn" ng-click="changeQuote()"></input>
         </div>
@@ -89,10 +91,5 @@
   <!-- Controller -->
   <script src="js/controllers/MainController.js"></script>
 
-
-  <!--
-  <script src="anime.js"></script>
-  <script src="script.js"></script>
-  -->
 </body>
 </html>

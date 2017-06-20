@@ -8,7 +8,7 @@
   <meta name="keywords" content="star wars, holocron, the lost holocrons, luke
   skywalker, skywalker, jedi, may the force be with you">
   <meta name="author" content="Marcos Leonel">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
 
   <title>Star Wars: The Lost Holocrons</title>
 
@@ -29,46 +29,58 @@
 
     <!-- MODAL BOX PRESENTING THE INTRO MESSAGE -->
     <div class="intro">
-      <div class="title">
-        <h1><img alt="Star Wars: The Lost Holocrons" src="img/star-wars-the-lost-holocrons.png"></h1>
-      </div>
-      <div class="skywalkers-msg">
-        <p>
-          Yavin Praxeum, 7:3:24 DBY
-        </p>
-        <p>
-          When I found The Jedi Path scriptures, in a Squib rescue ship near to Byss ruins, there’s also some holocrons - an organic crystal-lattice device which stored enormous quantities of data. After the Jedi Purge at Coruscant’s Temple, when Darth Sidious destroyed the archives, holocrons became quite rare and valuable.
-        </p>
-        <p>
-          Somehow, a Jedi Knight united worthy wisdom from some of the greatest Jedi Masters in the history. Now, I let it available for you students of the New Jedi Academy.
-        </p>
-        <p>
-          To see what the holocron can reveal to you, use the force and press the circular button in the center of the device.
-        </p>
-        <p>
-          May the force be with you!
-        </p>
-        <p class="skywalkers-signature">
-          Luke Skywalker
-        </p>
-      </div>
-      <div class="btn-box">
-        <button type="button" class="intro-btn">
-          ACCESS THE CHAMBER
-        </button>
+      <div class="intro-box">
+        <div class="title">
+          <h1>
+            <img alt="Star Wars" src="img/star-wars.png">
+            <img alt="The Lost Holocrons" src="img/the-lost-holocrons.png">
+          </h1>
+        </div>
+        <div class="skywalkers-msg">
+          <p>
+            Yavin Praxeum, 7:3:24 DBY
+          </p>
+          <p>
+            When I found The Jedi Path scriptures, in a Squib rescue ship near to Byss ruins, there’s also some holocrons - an organic crystal-lattice device which stored enormous quantities of data. After the Jedi Purge at Coruscant’s Temple, when Darth Sidious destroyed the archives, holocrons became quite rare and valuable.
+          </p>
+          <p>
+            Somehow, a Jedi Knight united worthy wisdom from some of the greatest Jedi Masters in the history. Now, I let it available for you students of the New Jedi Academy.
+          </p>
+          <p>
+            To see what the holocron can reveal to you, use the force and press the circular button in the center of the device.
+          </p>
+          <p>
+            May the force be with you!
+          </p>
+          <p class="skywalkers-signature">
+            Luke Skywalker
+          </p>
+        </div>
+        <div class="btn-box">
+          <button type="button" class="access-the-chamer" title="access-the-chamber">
+            ACCESS THE CHAMBER
+          </button>
+        </div>
       </div>
     </div>
     <!-- END OF MODAL BOX PRESENTING THE INTRO MESSAGE -->
 
     <div class="app" ng-app="jediApp">
-      <div class="title">
-        <h1><img alt="Star Wars: The Lost Holocrons" src="img/star-wars-the-lost-holocrons.png"></h1>
+      <div class="title-box">
+        <h1>
+          <img class="main-title" alt="Star Wars" src="img/star-wars.png">
+          <img class="second-title" alt="The Lost Holocrons" src="img/the-lost-holocrons.png">
+        </h1>
       </div>
       <div class="hologram" ng-controller="MainController">
         <div class="holocron--msg">
           <div class="holocron--msg-quote"> {{ msg.quote }}</div>
           <div class="holocron--msg-master">{{ msg.master }}</div>
           <!-- Put the Social buttons to share the quote -->
+          <div class="share-the-knowledge">
+            <span><img src="img/facebook.svg"></span>
+            <span><img src="img/twitter.svg"></span>
+          </div>
         </div>
         <div class="holocron-projection">
           <img alt="Jedi Master" ng-src="{{ msg.image }}">

@@ -7,7 +7,9 @@ app.controller('MainController',
        };
 
 
-  //Here is the data stored in the holocron
+  //Here is the data stored in the holocron.
+  //If you can see it, the force is strong in you.
+  //How many midchlorians do you have?
   const jedi = [{
     quote: ['Train yourself to let go of everything you fear to lose.',
             'Fear is the path to the dark side. Fear leads to anger. Anger leads to hate. Hate leads to suffering.',
@@ -81,7 +83,7 @@ app.controller('MainController',
 
   var jediCouncil = jedi.length;
 
-  //Fucntion to sort the holocron message and change the view
+  //Fucntion where the force sort the holocron message and change the view
   $scope.changeQuote = function() {
 
     var choosenMaster = Math.floor(Math.random() * (jediCouncil - 1));

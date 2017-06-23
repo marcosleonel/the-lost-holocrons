@@ -28,12 +28,14 @@
   <div class="wrapper">
 
     <!-- MODAL BOX PRESENTING THE INTRO MESSAGE -->
-    <div class="intro">
+    <div class="intro-modal">
       <div class="intro-box">
         <div class="title">
           <h1>
-            <img alt="Star Wars" src="img/star-wars.png">
-            <img alt="The Lost Holocrons" src="img/the-lost-holocrons.png">
+            <picture>
+              <source srcset="img/star-wars-the-lost-holocrons-760.png" media="(min-width: 780px)">
+              <img srcset="img/star-wars-the-lost-holocrons-320.png" class="title" alt="Star Wars: The Lost Holocrons">
+          </picture>
           </h1>
         </div>
         <div class="skywalkers-msg">
@@ -68,8 +70,10 @@
     <div class="app" ng-app="jediApp">
       <div class="title-box">
         <h1>
-          <img class="main-title" alt="Star Wars" src="img/star-wars.png">
-          <img class="second-title" alt="The Lost Holocrons" src="img/the-lost-holocrons.png">
+          <picture>
+            <source srcset="img/star-wars-the-lost-holocrons-760.jpg" media="(min-width: 780px)">
+            <img srcset="img/star-wars-the-lost-holocrons-320.jpg" class="title" alt="Star Wars: The Lost Holocrons">
+          </picture>
         </h1>
       </div>
       <div class="hologram" ng-controller="MainController">

@@ -3,10 +3,10 @@ app.controller('MainController',
        $scope.msg = {
          quote: '',
          master: '',
-         image: ''
+         image: '',
+         sharing: ''
        };
-
-
+      
   //Here is the data stored in the holocron.
   //If you can see it, the force is strong in you.
   //How many midchlorians do you have?
@@ -22,7 +22,7 @@ app.controller('MainController',
             'You must unlearn what you have learned.',
             'In a dark place we find ourselves, and a little more knowledge lights our way.',
             'When you look at the dark side, careful you must be. For the dark side looks back.',
-            'Through the Force, things you will see. Other places. The future…the past. Old friends long gone.',
+            'Through the Force, things you will see. Other places. The future… the past. Old friends long gone.',
             'Truly wonderful the mind of a child is.',
             'The fear of loss is a path to the Dark Side.',
             'A Jedi must have the deepest commitment, the most serious mind.',
@@ -77,13 +77,11 @@ app.controller('MainController',
   ];
 
   const viewMsg = $scope.msg;
-  const quoteContainer = document.querySelector(".holocron--msg-quote");
-  const masterContainer = document.querySelector(".holocron--msg-master");
-  const hologramContainer = document.querySelector(".holocron-projection");
+  const quoteFontSize = document.querySelector(".holocron--msg-quote");
 
   var jediCouncil = jedi.length;
 
-  //Fucntion where the force sort the holocron message and change the view
+  //Function where the force sort the holocron message and change the view
   $scope.changeQuote = function() {
 
     var choosenMaster = Math.floor(Math.random() * (jediCouncil - 1));
@@ -92,13 +90,52 @@ app.controller('MainController',
     var revealQuote = jedi[choosenMaster].quote[choosenQuote];
     var revealMaster = jedi[choosenMaster].master;
     var revealImage = jedi[choosenMaster].image;
+      
 
     viewMsg.quote = revealQuote;
     viewMsg.master = revealMaster;
     viewMsg.image = revealImage;
+    viewMsg.sharing = "\"" + revealQuote + "\" - " + revealMaster;
+      
+    //Change the font size if the quote is too long  
+    if (revealQuote.length > 70 && revealQuote.length < 90) {
+       quoteFontSize.style.fontSize = "0.8em";
+    } else if (revealQuote.length > 100) {
+        quoteFontSize.style.fontSize = "0.4em";
+    } else {
+        quoteFontSize.style.fontSize = "1em";
+    }
 
     return;
 
   }
+  
+  console.log(viewMsg.sharing);
+      
+  //TWITTER BUTTON FUNCTION
+    twttr.widgets.createShareButton("https:\/\/dev.twitter.com\/web\/tweet-button",
+    document.getElementById("twitter-btn"),
+    {
+    size: "large",
+    text: viewMsg.sharing,
+    hashtags: "starwars,thelostholocron,jedi,jedipath,quote",
+    via: "",
+    related: "twitterapi,twitter"
+    }
+    );
+  
+ 
+  
+  //CLOSE INTRO
+  var modal = document.querySelector(".intro-modal");
+      
+  $scope.accessChamber = function() {
+   // accessButton.addEventListener("click", function() {
+      modal.classList.toggle("closed");
+      
+    return;
+  }
+  
+   
 
-  }]);
+}]);

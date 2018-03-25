@@ -11,11 +11,16 @@
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
 
   <title>Star Wars: The Lost Holocrons</title>
-
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
   <link rel="stylesheet" href="style.css">
-
+  
+  <!-- Twitter Widget -->
+  <script src="https://platform.twitter.com/widgets.js"></script>
+    
   <!-- Angular JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+
 
   <!-- Facebook Graph -->
 
@@ -24,66 +29,83 @@
   <!-- Google Analytics -->
 
 </head>
-<body>
-  <div class="wrapper">
+<body ng-app="jediApp">
+  <div class="wrapper" ng-controller="MainController">
 
     <!-- MODAL BOX PRESENTING THE INTRO MESSAGE -->
-    <div class="intro-modal">
-      <div class="intro-box">
-        <div class="title">
-          <h1>
-            <picture>
-              <source srcset="img/star-wars-the-lost-holocrons-760.png" media="(min-width: 780px)">
-              <img srcset="img/star-wars-the-lost-holocrons-320.png" class="title" alt="Star Wars: The Lost Holocrons">
-          </picture>
-          </h1>
+    <modal id="story">
+        <div class="intro-modal">
+          <div class="intro-box">
+            <div class="title">
+              <h1>
+                <picture>
+                  <source srcset="img/star-wars-the-lost-holocrons-760.png" media="(min-width: 780px)">
+                  <img srcset="img/star-wars-the-lost-holocrons-320.png" class="title" alt="Star Wars: The Lost Holocrons">
+              </picture>
+              </h1>
+            </div>
+            <div class="skywalkers-msg">
+              <p>
+                Yavin Praxeum, 7:3:24 DBY
+              </p>
+              <p>
+                When I found The Jedi Path scriptures, in a Squib rescue ship near to Byss ruins, there’s also some holocrons - an organic crystal-lattice device which stored enormous quantities of data. After the Jedi Purge at Coruscant’s Temple, when Darth Sidious destroyed the archives, holocrons became quite rare and valuable.
+              </p>
+              <p>
+                Somehow, a Jedi Knight united worthy wisdom from some of the greatest Jedi Masters in the history. Now, I let it available for you students of the New Jedi Academy.
+              </p>
+              <p>
+                To see what the holocron can reveal to you, use the force and press the circular button in the center of the device.
+              </p>
+              <p>
+                May the force be with you!
+              </p>
+              <p class="skywalkers-signature">
+                Luke Skywalker
+              </p>
+            </div>
+            <div class="btn-box">
+              <button ng-click="accessChamber()" type="button" class="access-the-chamber" title="access-the-chamber">
+                ACCESS THE CHAMBER
+              </button>
+            </div>
+          </div>
         </div>
-        <div class="skywalkers-msg">
-          <p>
-            Yavin Praxeum, 7:3:24 DBY
-          </p>
-          <p>
-            When I found The Jedi Path scriptures, in a Squib rescue ship near to Byss ruins, there’s also some holocrons - an organic crystal-lattice device which stored enormous quantities of data. After the Jedi Purge at Coruscant’s Temple, when Darth Sidious destroyed the archives, holocrons became quite rare and valuable.
-          </p>
-          <p>
-            Somehow, a Jedi Knight united worthy wisdom from some of the greatest Jedi Masters in the history. Now, I let it available for you students of the New Jedi Academy.
-          </p>
-          <p>
-            To see what the holocron can reveal to you, use the force and press the circular button in the center of the device.
-          </p>
-          <p>
-            May the force be with you!
-          </p>
-          <p class="skywalkers-signature">
-            Luke Skywalker
-          </p>
-        </div>
-        <div class="btn-box">
-          <button type="button" class="access-the-chamer" title="access-the-chamber">
-            ACCESS THE CHAMBER
-          </button>
-        </div>
-      </div>
-    </div>
+    </modal>
+    
     <!-- END OF MODAL BOX PRESENTING THE INTRO MESSAGE -->
 
-    <div class="app" ng-app="jediApp">
+    <div class="app">
       <div class="title-box">
         <h1>
           <picture>
-            <source srcset="img/star-wars-the-lost-holocrons-760.jpg" media="(min-width: 780px)">
-            <img srcset="img/star-wars-the-lost-holocrons-320.jpg" class="title" alt="Star Wars: The Lost Holocrons">
+            <source srcset="img/star-wars-the-lost-holocrons-320.png" media="(min-width: 780px)">
+            <img srcset="img/star-wars-the-lost-holocrons-225.png" class="title" alt="Star Wars: The Lost Holocrons">
           </picture>
         </h1>
       </div>
-      <div class="hologram" ng-controller="MainController">
+      <div class="hologram-container">
         <div class="holocron--msg">
           <div class="holocron--msg-quote"> {{ msg.quote }}</div>
-          <div class="holocron--msg-master">{{ msg.master }}</div>
+          <div class="holocron--msg-master"> - {{ msg.master }}</div>
           <!-- Put the Social buttons to share the quote -->
           <div class="share-the-knowledge">
-            <span><img src="img/facebook.svg"></span>
-            <span><img src="img/twitter.svg"></span>
+            <span><img src="img/facebook.svg" class="social-icon"></span>
+            <span id="twitter-btn">
+                <!--
+                <a class="twitter-share-button" target="_blank"
+                href="https://twitter.com/share"
+                data-size="large"
+                data-text="{{ msg.quote }} -{{ msg.master}}"
+                data-url="https://dev.twitter.com/web/tweet-button"
+                data-hashtags="starwars,thelostholocron,jedi,jedipath,quote"
+                data-related="twitterapi,twitter">
+                <img src="img/twitter.svg" class="social-icon">
+                </a>
+                -->
+            </span>
+            
+              
           </div>
         </div>
         <div class="holocron-projection">
@@ -106,6 +128,29 @@
 
   <!-- Controller -->
   <script src="js/controllers/MainController.js"></script>
+    
+    
+  <!-- Twitter Widget -->
+  <script src="https://platform.twitter.com/widgets.js"></script>
+  <script>
+      window.twttr = (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+          t = window.twttr || {};
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+
+        t._e = [];
+        t.ready = function(f) {
+        t._e.push(f);
+     };
+
+     return t;
+     }(document, "script", "twitter-wjs"));
+      
+  </script>
 
 </body>
 </html>
